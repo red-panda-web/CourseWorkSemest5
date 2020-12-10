@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfApp1.AddClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AddClient" Height="453.571" Width="606.464" FontSize="14" ResizeMode="NoResize">
+    <Grid>
+        <GroupBox Header="Персональные данные:" Height="109" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="569">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Content="Фамилия*:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Surname" HorizontalAlignment="Left" Height="23" Margin="86,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+                <Label Content="Имя*:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="86,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="1"/>
+                <TextBox x:Name="Patronymic" HorizontalAlignment="Left" Height="23" Margin="110,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Column="1"/>
+                <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="110,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Column="1" Grid.Row="1" PreviewTextInput="Phone_PreviewTextInput" MaxLength="11"/>
+                <Label Content="Отчество:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label Content="Телефон*:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Адрес проживания:" HorizontalAlignment="Left" Height="192" Margin="10,124,10,0" VerticalAlignment="Top" Width="569">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Content="Страна*:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Country" HorizontalAlignment="Left" Height="23" Margin="86,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Text="Россия"/>
+                <Label Content="Город*:" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <Label Content="Улица*:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="2"/>
+                <Label Content="Дом*:" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label Content="Квартира:" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+                <TextBox x:Name="City" HorizontalAlignment="Left" Height="23" Margin="86,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="1"/>
+                <TextBox x:Name="Street" HorizontalAlignment="Left" Height="23" Margin="86,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="2"/>
+                <TextBox x:Name="Building" HorizontalAlignment="Left" Height="23" Margin="110,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Column="1"/>
+                <TextBox x:Name="Flat" HorizontalAlignment="Left" Height="23" Margin="110,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Column="1" Grid.Row="1" PreviewTextInput="Flat_PreviewTextInput"/>
+            </Grid>
+        </GroupBox>
+        <CheckBox x:Name="New_card" Content="Создать новую пустую карту" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button Content="Добавить клиента" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="149" Height="41" Click="Button_Click"/>
+    </Grid>
+</Window>
