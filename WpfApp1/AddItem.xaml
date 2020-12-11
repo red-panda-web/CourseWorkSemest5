@@ -1,0 +1,66 @@
+﻿<Window x:Class="WpfApp1.AddItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AddItem" Height="425.912" Width="480.292" ResizeMode="NoResize" FontSize="14">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="330*"></RowDefinition>
+            <RowDefinition Height="67*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Заполните данные о товаре:" HorizontalAlignment="Left" Height="307" Margin="10,10,0,0" VerticalAlignment="Top" Width="442">
+            <Grid>
+                <Label Content="Название*:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="item_Name" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                <Label Content="Единицы измерения*:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="item_units" HorizontalAlignment="Left" Height="23" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                <Label Content="Ссылка на фото*:" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="item_photo" HorizontalAlignment="Left" Height="23" Margin="10,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                <Label Content="Гарантия (мес.):" HorizontalAlignment="Left" Margin="259,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="item_guarantee" HorizontalAlignment="Left" Height="23" Margin="259,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                <Label Content="Цена*:" HorizontalAlignment="Left" Margin="259,179,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="item_price" HorizontalAlignment="Left" Height="23" Margin="259,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                <Label Content="Тип*:" HorizontalAlignment="Left" Margin="259,93,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="item_type" HorizontalAlignment="Left" Margin="259,127,0,0" VerticalAlignment="Top" Width="161">
+                    <ComboBoxItem Content="Краски" IsEnabled="False" FontWeight="Bold" FontSize="16"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Краски для внутренних работ"/>
+                    <ComboBoxItem Content="Краски для наружных работ"/>
+                    <ComboBoxItem Content="Лаки"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Инструмент малярный" IsEnabled="False"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Валики"/>
+                    <ComboBoxItem Content="Кисти"/>
+                    <ComboBoxItem Content="Краскораспылители"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Напольные покрытия" IsEnabled="False" FontWeight="Bold" FontSize="16"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Линолеум"/>
+                    <ComboBoxItem Content="Ламинат"/>
+                    <ComboBoxItem Content="Паркет"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Водоснабжение" IsEnabled="False" FontWeight="Bold" FontSize="16"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Канализация" IsEnabled="False"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Трубы"/>
+                    <ComboBoxItem Content="Люки"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Радиаторы"/>
+                    <Separator/>
+                    <ComboBoxItem Content="Подарочные сертификаты" FontWeight="Bold" FontSize="16"/>
+                </ComboBox>
+                <Label Content="* - Поля обязательные к заполнению" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,252,0,0"/>
+
+            </Grid>
+        </GroupBox>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="175,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Height="47" Click="Button_Click"/>
+    </Grid>
+</Window>

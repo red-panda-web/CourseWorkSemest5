@@ -10,19 +10,20 @@ namespace WpfApp1
             InitializeComponent();
             using (ADOmodel db = new ADOmodel())
             {
-                all_clients.Content = db.Clients.ToList().Count().ToString();
+                all_clients.Content = db.Clients.Count().ToString();
                 allEmpl.Content = db.Employees.Count().ToString();
+                all_Items.Content = db.Items.Count().ToString();
             }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)   // Пункт меню "Выход из системы"
         {
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();     
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e) // Пункт меню "Выход"
         {
             this.Close();
         }
@@ -123,6 +124,44 @@ namespace WpfApp1
         {
             DeleteClient dc = new DeleteClient("employee");
             dc.Show();
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)  // Кнопка "Найти сотрудника"
+        {
+            FindEmployee fe = new FindEmployee();
+            fe.Owner = this;
+            fe.Show();
+        }
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)  // Кнопка "Список товаров"
+        {
+            using (ADOmodel db = new ADOmodel())
+            {
+                all_Items.Content = db.Items.Count().ToString();
+                ItemsTable.ItemsSource = db.Items.Join(db.Item_type, i => i.id_Type, it => it.id_Type, (i, it) => new
+                {
+                    i.id_Item,
+                    it.Type_name,
+                    i.Name,
+                    i.Untits,
+                    i.Photo,
+                    i.Guarantee,
+                    i.Price
+                }).ToList();
+            }
+        }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)  // Кнопка "Найти товар"
+        {
+            FindItem fi = new FindItem();
+            fi.Owner = this;
+            fi.Show();
+        }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)  // Кнопка "Добавить товар"
+        {
+            AddItem ai = new AddItem();
+            ai.Show();
         }
     }
 }
