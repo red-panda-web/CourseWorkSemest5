@@ -163,5 +163,17 @@ namespace WpfApp1
             AddItem ai = new AddItem();
             ai.Show();
         }
+
+        private void Button_Click_14(object sender, RoutedEventArgs e)  // Кнопка "Изменить товар"
+        {
+            ChangeItem ci = new ChangeItem();
+            ci.Show();
+        }
+
+        private void Button_Click_15(object sender, RoutedEventArgs e)  // Кнопка "Удалить товар"
+        {
+            DeleteClient di = new DeleteClient("item");
+            di.Show();
+        }
     }
 }

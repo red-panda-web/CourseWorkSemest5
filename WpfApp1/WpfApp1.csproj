@@ -88,6 +88,9 @@
     <Compile Include="ChangeEmployee.xaml.cs">
       <DependentUpon>ChangeEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeItem.xaml.cs">
+      <DependentUpon>ChangeItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConsultantPage.xaml.cs">
       <DependentUpon>ConsultantPage.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangeEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

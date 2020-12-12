@@ -56,7 +56,21 @@ namespace WpfApp1
                                 this.Close();
                             }
                             else MessageBox.Show("Сотрудник с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }                        
+                        }  
+                        else if(mode == "item")
+                        {
+                            var ItemExists = db.Items.Any(i => i.id_Item == id);
+                            if (ItemExists)
+                            {
+                                var Item = db.Items.Where(i => i.id_Item == id).FirstOrDefault();
+                                db.Items.Remove(Item);
+                                db.SaveChanges();
+
+                                MessageBox.Show("Товар удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                this.Close();
+                            }
+                            else MessageBox.Show("Товар с таким id не найден!", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
                     }
                 }
                 else MessageBox.Show("Некорректный id!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);

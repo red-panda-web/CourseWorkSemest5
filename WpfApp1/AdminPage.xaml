@@ -106,8 +106,8 @@
                             <Button Content="Список товаров" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Click="Button_Click_11"/>
                             <Button Content="Добавить товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Column="1" Click="Button_Click_13"/>
                             <Button Content="Найти товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Row="1" Click="Button_Click_12"/>
-                            <Button Content="Изменить товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Column="1" Grid.Row="1"/>
-                            <Button Content="Удалить товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Column="1" Grid.Row="2"/>
+                            <Button Content="Изменить товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Column="1" Grid.Row="1" Click="Button_Click_14"/>
+                            <Button Content="Удалить товар" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="68" Grid.Column="1" Grid.Row="2" Click="Button_Click_15"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
