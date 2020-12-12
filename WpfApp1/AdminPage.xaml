@@ -16,7 +16,7 @@
             <MenuItem Header="Справка"></MenuItem>
         </Menu>
         <TabControl Margin="0,30,0,0"  FontSize="14">
-            <TabItem Header="Клиенты" Margin="-2,-2,-39,0">
+            <TabItem Header="Клиенты" Margin="5,-2,-39,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="1.25*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="ClientsTable" Grid.Column="1" Margin="10,10,10,10" Grid.RowSpan="2"/>
-                    <GroupBox Header="Клиенты" Margin="10,74,10,10">
+                    <GroupBox Header="Клиенты:" Margin="10,74,10,10">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -113,7 +113,51 @@
                 </Grid>
             </TabItem>
             <TabItem Margin="61,-2,-61,0" Header="Заказы" Width="102">
-                <Grid Background="#FFE5E5E5"></Grid>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.75*"/>
+                        <ColumnDefinition Width="1.25*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="OrdersTable" Grid.Column="1" Grid.RowSpan="2" Margin="10,10,10,10"/>
+                    <GroupBox Header="Заказы:" HorizontalAlignment="Left" Height="159" Margin="10,10,0,0" VerticalAlignment="Top" Width="312">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Content="Список заказов" Click="Button_Click_16"/>
+                            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="47" Margin="10,11,0,0" Grid.Row="1" Content="Изменить"/>
+                            <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Margin="10,11,0,0" Grid.Row="1"/>
+                            <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Content="Новый заказ" Click="Button_Click_17"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Доставки:" HorizontalAlignment="Left" Height="159" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="312">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Список доставок" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47"/>
+                            <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1"/>
+                            <Button Content="Изменить" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Row="1"/>
+                            <Button Content="Удалить" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Grid.Row="1"/>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem Header="Отчёты" Margin="68,-2,-70,0" HorizontalAlignment="Left" Width="59">
                 <Grid Background="#FFE5E5E5"></Grid>

@@ -175,5 +175,40 @@ namespace WpfApp1
             DeleteClient di = new DeleteClient("item");
             di.Show();
         }
+
+        private void Button_Click_16(object sender, RoutedEventArgs e)  // Кнопка "Список заказов"
+        {
+            using (ADOmodel db = new ADOmodel())
+            {
+                OrdersTable.ItemsSource = (from o in db.Orders 
+                                           join em in db.Employees on o.id_Employee equals em.id_Employee
+                                           join cl in db.Clients on o.id_Client equals cl.id_Client
+                                           join c in db.Certificates on o.id_Certificate equals c.id_Certificate into grouping0
+                                           from gr0 in grouping0.DefaultIfEmpty()
+                                           join lc in db.Loyality_card on cl.id_Loyality_card equals lc.id_Loyality_card into grouping1
+                                           from gr1 in grouping1.DefaultIfEmpty()
+                                           join d in db.Deliveries on o.id_Delivery equals d.id_Delivery into grouping2
+                                           from gr2 in grouping2.DefaultIfEmpty()
+                                           join dt in db.Delivery_type on gr2.id_Type equals dt.id_Type into grouping3
+                                           from gr3 in grouping3.DefaultIfEmpty()
+                                           select new
+                                           {
+                                               id = o.id_Order,
+                                               employee = em.Surname + " " + em.Name + " " + em.Patronymic,
+                                               client = cl.Surname + " " + cl.Name + " " + cl.Patronymic,
+                                               date = o.Date,
+                                               order_cost = o.Order_cost,
+                                               loyality_discount = gr1 == null ? 0 : gr1.Loyality_discount,
+                                               certificate = gr0 == null ? 0 : gr0.Value, 
+                                               delivery = gr2 == null ? "-" : gr3.Type_name,                               
+                                           }).ToList();
+            }
+        }
+
+        private void Button_Click_17(object sender, RoutedEventArgs e)  // Кнопка "Добавить заказ"
+        {
+            AddOrder ao = new AddOrder();
+            ao.Show();
+        }
     }
 }
