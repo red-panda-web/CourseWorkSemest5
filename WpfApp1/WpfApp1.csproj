@@ -114,6 +114,9 @@
     <Compile Include="ItemCard.xaml.cs">
       <DependentUpon>ItemCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderList.xaml.cs">
+      <DependentUpon>OrderList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SalesManagerPage.xaml.cs">
       <DependentUpon>SalesManagerPage.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SalesManagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -246,6 +253,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="loading_spinner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="reload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

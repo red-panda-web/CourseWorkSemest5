@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DeleteClient" Height="125.19" Width="570.168" ResizeMode="NoResize" FontSize="14">
     <Grid>
-        <Label Content="Введите id клиента/сотрудника/товара, &#xD;&#xA;который необходимо удалить:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="263" Height="58"/>
+        <Label Content="Введите id клиента/сотрудника/товара/ &#xA;заказа, который необходимо удалить:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="267" Height="58"/>
         <TextBox x:Name="id_delete" HorizontalAlignment="Left" Height="23" Margin="292,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="412,45,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click"/>
 

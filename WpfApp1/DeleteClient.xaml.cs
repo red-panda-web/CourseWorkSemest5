@@ -69,7 +69,24 @@ namespace WpfApp1
                                 MessageBox.Show("Товар удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                                 this.Close();
                             }
-                            else MessageBox.Show("Товар с таким id не найден!", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
+                            else MessageBox.Show("Товар с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else if (mode == "order")
+                        {
+                            var OrderExists = db.Orders.Any(i => i.id_Order == id);
+                            if (OrderExists)
+                            {
+                                var Order = db.Orders.Where(i => i.id_Order == id).FirstOrDefault();
+                                var Delivery = db.Deliveries.Where(d => d.id_Delivery == Order.id_Delivery).FirstOrDefault();
+
+                                db.Orders.Remove(Order);
+                                if (Delivery != null) db.Deliveries.Remove(Delivery);
+                                db.SaveChanges();
+
+                                MessageBox.Show("Заказ удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                this.Close();
+                            }
+                            else MessageBox.Show("Заказ с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                 }

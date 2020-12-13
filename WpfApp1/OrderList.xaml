@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp1.OrderList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Состав заказа" Height="465.328" Width="431.022" ResizeMode="NoResize" FontSize="14">
+    <Grid>
+        <GroupBox Header="Товары:" HorizontalAlignment="Left" Height="311" Margin="10,10,0,0" VerticalAlignment="Top" Width="391">
+            <Grid>
+                <DataGrid x:Name="OrderListTable" HorizontalAlignment="Left" Height="268" Margin="10,10,0,0" VerticalAlignment="Top" Width="359"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Убрать товар:" HorizontalAlignment="Left" Height="85" Margin="10,326,0,0" VerticalAlignment="Top" Width="300">
+            <Grid>
+                <Label Content="id Товара:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+                <Button Content="Убрать" HorizontalAlignment="Left" Margin="179,14,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+
+            </Grid>
+        </GroupBox>
+        <Button HorizontalAlignment="Left" Margin="326,339,0,0" VerticalAlignment="Top" Width="75" Height="72" Background="#FFFFFBFB">
+            <Grid>
+                <Image Source="reload.png" ></Image>
+            </Grid>
+        </Button>
+
+    </Grid>
+</Window>

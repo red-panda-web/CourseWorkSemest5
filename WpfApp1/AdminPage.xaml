@@ -134,9 +134,8 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Content="Список заказов" Click="Button_Click_16"/>
-                            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="47" Margin="10,11,0,0" Grid.Row="1" Content="Изменить"/>
-                            <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Margin="10,11,0,0" Grid.Row="1"/>
-                            <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Content="Новый заказ" Click="Button_Click_17"/>
+                            <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Margin="10,11,0,0" Grid.Row="1" Click="Button_Click_18"/>
+                            <Button HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="130" Height="47" Content="Новый заказ" Click="Button_Click_17" Grid.Row="1"/>
 
                         </Grid>
                     </GroupBox>

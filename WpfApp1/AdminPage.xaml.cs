@@ -210,5 +210,11 @@ namespace WpfApp1
             AddOrder ao = new AddOrder();
             ao.Show();
         }
+
+        private void Button_Click_18(object sender, RoutedEventArgs e)  // Кнопка "Удалить заказ"
+        {
+            DeleteClient dc = new DeleteClient("order");
+            dc.Show();
+        }
     }
 }
