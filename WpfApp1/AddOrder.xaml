@@ -17,11 +17,11 @@
             <ColumnDefinition Width="218*"/>
             <ColumnDefinition Width="279*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Введите id клиента:" HorizontalAlignment="Left" Height="82" Margin="10,10,0,0" VerticalAlignment="Top" Width="213">
+        <GroupBox x:Name="client_block" Header="Введите id клиента:" HorizontalAlignment="Left" Height="82" Margin="10,10,0,0" VerticalAlignment="Top" Width="213">
             <Grid>
                 <Label Content="id:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="client_id" HorizontalAlignment="Left" Height="23" Margin="40,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
-                <Button Content="Ok" HorizontalAlignment="Left" Margin="137,21,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click"/>
+                <Button Content="Выбор" HorizontalAlignment="Left" Margin="137,21,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="empolyee_data" Header="Выберите сотрудника:" HorizontalAlignment="Left" Height="111" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="213" IsEnabled="False">
@@ -69,23 +69,23 @@
             <Grid>
                 <Label Content="Номинал:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="item_certificate" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0"/>
-                <Button Content="Применить" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="90"/>
+                <Button Content="Применить" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_4"/>
 
             </Grid>
         </GroupBox>
         <GroupBox x:Name="costs_data" Grid.Column="2" Header="Данные о заказе:" HorizontalAlignment="Left" Height="286" Margin="10,42,0,0" Grid.Row="1" VerticalAlignment="Top" Width="198" IsEnabled="False">
             <Grid>
                 <Label Content="Общая стоимость:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="order_cost" Content="-" HorizontalAlignment="Left" Margin="19,39,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="order_cost" Content="-" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
                 <Label Content="Стоимость со скидкой:" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="order_discountCost" Content="-" HorizontalAlignment="Left" Margin="19,107,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="order_discountCost" Content="-" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top"/>
                 <Label Content="Дата оформления:" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="order_date" Content="-" HorizontalAlignment="Left" Margin="19,175,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="order_date" Content="-" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top"/>
                 <Button Content="Состав заказа" HorizontalAlignment="Left" Margin="19,227,0,0" VerticalAlignment="Top" Width="147" Click="Button_Click_3"/>
 
             </Grid>
         </GroupBox>
-        <CheckBox x:Name="delivery_cb" Content="Доставка" Grid.Column="3" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="delivery_cb" Content="Доставка" Grid.Column="3" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Click="delivery_cb_Click"/>
         <GroupBox x:Name="delivery_data" Grid.Column="3" Header="Данные о доставке" HorizontalAlignment="Left" Height="343" Margin="10,39,0,0" VerticalAlignment="Top" Width="259" Grid.RowSpan="2" IsEnabled="False">
             <Grid>
                 <Label Content="Страна:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -100,9 +100,10 @@
                 <Label x:Name="address_flat" Content="-" HorizontalAlignment="Left" Margin="82,146,0,0" VerticalAlignment="Top"/>
                 <Separator HorizontalAlignment="Left" Height="16" Margin="10,180,0,0" VerticalAlignment="Top" Width="227"/>
                 <Label Content="Тип доставки:" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="delivery_type" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="152"/>
+                <ComboBox x:Name="delivery_type" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="delivery_type_SelectionChanged"/>
                 <Label Content="Стоимость:" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="delivery_cost" Content="-" HorizontalAlignment="Left" Margin="105,278,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="delivery_select_btn" Content="Принять" HorizontalAlignment="Left" Margin="175,235,0,0" VerticalAlignment="Top" Width="62" Height="25" Click="Button_Click_5"/>
             </Grid>
         </GroupBox>
         <Button x:Name="createOrder_btn" Content="Оформить заказ" Grid.Column="3" HorizontalAlignment="Left" Margin="14,285,0,0" Grid.Row="1" VerticalAlignment="Top" Width="255" Height="43" IsEnabled="False" Click="createOrder_btn_Click"/>

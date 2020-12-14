@@ -16,12 +16,12 @@
         <GroupBox Header="Убрать товар:" HorizontalAlignment="Left" Height="85" Margin="10,326,0,0" VerticalAlignment="Top" Width="300">
             <Grid>
                 <Label Content="id Товара:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+                <TextBox x:Name="item_id" HorizontalAlignment="Left" Height="23" Margin="89,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
                 <Button Content="Убрать" HorizontalAlignment="Left" Margin="179,14,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
 
             </Grid>
         </GroupBox>
-        <Button HorizontalAlignment="Left" Margin="326,339,0,0" VerticalAlignment="Top" Width="75" Height="72" Background="#FFFFFBFB">
+        <Button HorizontalAlignment="Left" Margin="326,339,0,0" VerticalAlignment="Top" Width="75" Height="72" Background="#FFFFFBFB" Click="Button_Click_1">
             <Grid>
                 <Image Source="reload.png" ></Image>
             </Grid>
