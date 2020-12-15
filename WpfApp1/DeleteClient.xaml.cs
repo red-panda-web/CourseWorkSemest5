@@ -22,7 +22,7 @@ namespace WpfApp1
                 {
                     using (ADOmodel db = new ADOmodel())
                     {
-                        if (mode == "client")
+                        if (mode == "client")   // Если форма удаления была вызвана из вкладки "Клиент"
                         {
                             var ClientExists = db.Clients.Any(p => p.id_Client == id);
 
@@ -42,7 +42,7 @@ namespace WpfApp1
                             }
                             else MessageBox.Show("Клиент с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
-                        else if(mode == "employee")
+                        else if(mode == "employee") // Если форма удаления была вызвана из вкладки "Сотрудники"
                         {
                             var EmployeeExists = db.Employees.Any(em => em.id_Employee == id);
 
@@ -57,7 +57,7 @@ namespace WpfApp1
                             }
                             else MessageBox.Show("Сотрудник с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         }  
-                        else if(mode == "item")
+                        else if(mode == "item") // Если форма удаления была вызвана из вкладки "Товары"
                         {
                             var ItemExists = db.Items.Any(i => i.id_Item == id);
                             if (ItemExists)
@@ -71,16 +71,28 @@ namespace WpfApp1
                             }
                             else MessageBox.Show("Товар с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
-                        else if (mode == "order")
+                        else if (mode == "order")   // Если форма удаления была вызвана из вкладки "Заказы"
                         {
-                            var OrderExists = db.Orders.Any(i => i.id_Order == id);
-                            if (OrderExists)
+                            var OrderExists = db.Orders.Any(i => i.id_Order == id); // Проверка существования заказа с указанным id
+                            if (OrderExists)    // Если такой существует
                             {
-                                var Order = db.Orders.Where(i => i.id_Order == id).FirstOrDefault();
-                                var Delivery = db.Deliveries.Where(d => d.id_Delivery == Order.id_Delivery).FirstOrDefault();
+                                var Order = db.Orders.Where(i => i.id_Order == id).FirstOrDefault();    // Считываем данные заказа
+                                var Delivery = db.Deliveries.Where(d => d.id_Delivery == Order.id_Delivery).FirstOrDefault();   // И доставки 
 
-                                db.Orders.Remove(Order);
-                                if (Delivery != null) db.Deliveries.Remove(Delivery);
+                                if (Order.id_Certificate != null)   // Проверяем был ли применен сертификат, если да, то удаляем его
+                                {
+                                    var cert_id = db.Certificates.Where(c => c.id_Certificate == Order.id_Certificate).FirstOrDefault();
+                                    db.Certificates.Remove(cert_id);
+                                }
+                                db.Orders.Remove(Order);    // Удаляем заказ
+                                if (Delivery != null) db.Deliveries.Remove(Delivery);   // Если была доставка, то и её тоже
+
+                                var items = db.Item_list.Where(il => il.id_Order == Order.id_Order).ToList();   // Находим все товары из заказа
+                                for(int i = 0; i< items.Count(); i++)   // И удаляем их их таблицы учета Item_list
+                                {
+                                    db.Item_list.Remove(items[i]);
+                                }
+
                                 db.SaveChanges();
 
                                 MessageBox.Show("Заказ удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);

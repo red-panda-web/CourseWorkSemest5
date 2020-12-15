@@ -85,7 +85,7 @@
 
             </Grid>
         </GroupBox>
-        <CheckBox x:Name="delivery_cb" Content="Доставка" Grid.Column="3" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Click="delivery_cb_Click"/>
+        <CheckBox x:Name="delivery_cb" Content="Доставка" Grid.Column="3" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Click="delivery_cb_Click" IsEnabled="False"/>
         <GroupBox x:Name="delivery_data" Grid.Column="3" Header="Данные о доставке" HorizontalAlignment="Left" Height="343" Margin="10,39,0,0" VerticalAlignment="Top" Width="259" Grid.RowSpan="2" IsEnabled="False">
             <Grid>
                 <Label Content="Страна:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>

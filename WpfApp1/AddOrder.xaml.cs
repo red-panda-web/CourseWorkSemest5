@@ -34,7 +34,7 @@ namespace WpfApp1
             InitializeComponent();
             using (ADOmodel db = new ADOmodel())
             {
-                or_id = db.Orders.Select(o => o.id_Order).Count() + 2;  // Создание id будущего заказа
+                or_id = db.Orders.Select(o => o.id_Order).Max() + 1;  // Создание id будущего заказа
             }
         }
 
@@ -58,6 +58,7 @@ namespace WpfApp1
                             certificate_data.IsEnabled = true;
                             costs_data.IsEnabled = true;
                             createOrder_btn.IsEnabled = true;
+                            delivery_cb.IsEnabled = true;
                             client_block.IsEnabled = false; // Деактивация блока ввода id клиента
                             order_date.Content = DateTime.Now.ToString();   // Вывод даты формирования заказа
 
@@ -221,7 +222,7 @@ namespace WpfApp1
                     if(confirm == MessageBoxResult.Yes) // Если нажата кнопка "Да"
                     {
                         total_cost -= certificateValue; // Уменьшаем текущую общую стоимость на номинал сертификата
-                        if (total_cost < 0) total_cost = 0; // Если номинал сертификата превышает сумму покупки, то сумма покупки становиться равна 0
+                        if (total_cost < 0) total_cost = 1; // Если номинал сертификата превышает сумму покупки, то сумма покупки становиться равна 1руб.
                         costWithDiscount = total_cost - (total_cost / 100 * discount);  // Пересчитываем стоимость с учетом скидки по КЛ
 
                         order_cost.Content = total_cost + " руб.";   // Выводим новую стоимость
@@ -295,12 +296,31 @@ namespace WpfApp1
 
         private void createOrder_btn_Click(object sender, RoutedEventArgs e)    // Кнопка оформления заказа
         {
-            if (empl_position.SelectedItem == null || empl_fullName.SelectedItem == null) MessageBox.Show("Выберите сотрудника!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);   // Проверки на правильную заполненность полей
-            if (new_order_list.Count() == 0 || list_for_print.Count() == 0) MessageBox.Show("Нельзя оформить пустой заказ!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
-            if (new_order_list.Count() != list_for_print.Count()) MessageBox.Show("Ошибка в формировании списков заказа!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
-            if (item_certificate.Text == "") MessageBox.Show("Поле 'Номинал' блока 'Сертификат' должно содержать значение!\n(0, 5000, 30000, 50000)", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
-            if (delivery_cb.IsChecked == true && delivery_type.IsEnabled == true && delivery_select_btn.IsEnabled == true) MessageBox.Show("Подтвердите тип доставки!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
-            else{    // Если все заполнено корректно, то начинаем отправлять данные в БД
+            bool canSend = true;    // Переменная для контроля корректности заполнения данных
+
+            if (empl_position.SelectedItem == null || empl_fullName.SelectedItem == null)   // Проверки на правильную заполненность полей
+            {
+                MessageBox.Show("Выберите сотрудника!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
+                canSend = false;
+            }
+            if (new_order_list.Count() == 0 || list_for_print.Count() == 0) {
+                MessageBox.Show("Нельзя оформить пустой заказ!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
+                canSend = false;
+            }
+            if (new_order_list.Count() != list_for_print.Count()) {
+                MessageBox.Show("Ошибка в формировании списков заказа!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
+                canSend = false;
+            }
+            if (item_certificate.Text == "") {
+                MessageBox.Show("Поле 'Номинал' блока 'Сертификат' должно содержать значение!\n(0, 5000, 30000, 50000)", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
+                canSend = false;
+            }
+            if (delivery_cb.IsChecked == true && delivery_type.IsEnabled == true && delivery_select_btn.IsEnabled == true) {
+                MessageBox.Show("Подтвердите тип доставки!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Warning);
+                canSend = false;
+            } 
+
+            if(canSend){    // Если все заполнено корректно, то начинаем отправлять данные в БД
                 using (ADOmodel db = new ADOmodel())
                 {
                     int id_cert = 0;    // Идентификатор нового сертификата
@@ -308,19 +328,19 @@ namespace WpfApp1
 
                     if(Convert.ToInt32(item_certificate.Text) != 0) // Если был применен сертификат, то создаем запись о сертификате
                     {
+                        id_cert = db.Certificates.Select(c => c.id_Certificate).Max() + 1; 
                         int certificateValue = Convert.ToInt32(item_certificate.Text);
-                        Certificate new_certificate = new Certificate() { Value = certificateValue };
+                        Certificate new_certificate = new Certificate() {id_Certificate = id_cert, Value = certificateValue };
                         db.Certificates.Add(new_certificate);
                         db.SaveChanges();
-                        id_cert = db.Certificates.Select(c => c.id_Certificate).Max(); 
                     }
 
                     if(delivery_cb.IsChecked == true)   // Если была выбрана доставка, то создаем запись по доставке
                     {
-                        Delivery new_delivery = new Delivery() { id_Type = devType_id, Cost = devCost };
+                        id_deliv = db.Deliveries.Select(d => d.id_Delivery).Max() + 1;
+                        Delivery new_delivery = new Delivery() {id_Delivery = id_deliv, id_Type = devType_id, Cost = devCost };
                         db.Deliveries.Add(new_delivery);
                         db.SaveChanges();
-                        id_deliv = db.Deliveries.Select(d => d.id_Delivery).Max();
                     }
 
                     if(delivery_cb.IsChecked == false && devCost > 0 && delivery_select_btn.IsEnabled == false)   // Если доставка была сначала выбрана и применена, но потом чекбокс доставки был снят
@@ -328,6 +348,82 @@ namespace WpfApp1
                         total_cost -= devCost;  // Убираем из стоимости заказа доставку
                         costWithDiscount = total_cost - (total_cost / 100 * discount);  // И пересчитываем стоимость заказа с учетом КЛ
                     }
+
+                    Orders new_order;
+
+                    if (id_cert != 0 && id_deliv != 0)  // Формирование заказа с сертификатом и доставкой
+                    {
+                        new_order = new Orders()
+                        {
+                            id_Order = or_id,
+                            id_Client = cl_id,
+                            id_Employee = em_id,
+                            Date = DateTime.Now,
+                            Order_cost = (decimal)costWithDiscount,
+                            Discount = discount,
+                            id_Certificate = id_cert,
+                            id_Delivery = id_deliv
+                        };
+                        db.Orders.Add(new_order);
+                    }
+                    else if (id_cert == 0 && id_deliv != 0) // Формирование заказа без сертификата, но с доставкой
+                    {
+                        new_order = new Orders()
+                        {
+                            id_Order = or_id,
+                            id_Client = cl_id,
+                            id_Employee = em_id,
+                            Date = DateTime.Now,
+                            Order_cost = (decimal)costWithDiscount,
+                            Discount = discount,
+                            id_Delivery = id_deliv
+                        };
+                        db.Orders.Add(new_order);
+                    }
+                    else if(id_cert != 0 && id_deliv == 0)  // Формирование заказа с сертификатом, но без доставки
+                    {
+                        new_order = new Orders()
+                        {
+                            id_Order = or_id,
+                            id_Client = cl_id,
+                            id_Employee = em_id,
+                            Date = DateTime.Now,
+                            Order_cost = (decimal)costWithDiscount,
+                            Discount = discount,
+                            id_Certificate = id_cert,
+                        };
+                        db.Orders.Add(new_order);
+                    }
+                    else // Формирование заказа без сертификата и без доставки
+                    {
+                        new_order = new Orders()
+                        {
+                            id_Order = or_id,
+                            id_Client = cl_id,
+                            id_Employee = em_id,
+                            Date = DateTime.Now,
+                            Order_cost = (decimal)costWithDiscount,
+                            Discount = discount,
+                        };
+                        db.Orders.Add(new_order);
+                    }
+
+                    foreach(var item in new_order_list) // Добавление товаров заказа в таблицу Item_list
+                    {
+                        int il_id = item.id_Item;
+                        int il_quant = item.Quantity;
+                        Item_list il = new Item_list()
+                        {
+                            id_Order = or_id,
+                            id_Item = il_id,
+                            Quantity = il_quant
+                        };
+                        db.Item_list.Add(il);
+                    }
+
+                    db.SaveChanges();
+                    MessageBox.Show("Заказ успешно добавлен!", "Оформление заказа", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
             }
         }

@@ -16,6 +16,7 @@ namespace WpfApp1
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_Delivery { get; set; }
 
         public int id_Type { get; set; }

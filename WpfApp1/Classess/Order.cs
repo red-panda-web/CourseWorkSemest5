@@ -16,6 +16,7 @@ namespace WpfApp1
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_Order { get; set; }
 
         public int id_Client { get; set; }
