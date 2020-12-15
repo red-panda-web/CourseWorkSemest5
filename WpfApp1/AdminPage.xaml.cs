@@ -216,5 +216,24 @@ namespace WpfApp1
             DeleteClient dc = new DeleteClient("order");
             dc.Show();
         }
+
+        private void Button_Click_19(object sender, RoutedEventArgs e)  // Кнопка "Список доставок"
+        {
+            using (ADOmodel db = new ADOmodel())
+            {
+                OrdersTable.ItemsSource = db.Deliveries.Join(db.Delivery_type, d => d.id_Type, dt => dt.id_Type, (d, dt) => new
+                {
+                    d.id_Delivery,
+                    dt.Type_name,
+                    d.Cost
+                }).ToList();
+            }
+        }
+
+        private void Button_Click_20(object sender, RoutedEventArgs e)  // Кнопка "Добавить доставку"
+        {
+            AddDelivery ad = new AddDelivery();
+            ad.Show();
+        }
     }
 }

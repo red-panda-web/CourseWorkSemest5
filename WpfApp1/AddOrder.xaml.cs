@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
@@ -22,6 +14,9 @@ namespace WpfApp1
         int or_id;  // id заказа
         int devType_id; // id типа доставки
         int devCost = 0;    // Стоимость доставки
+        int commonIn;   // Доставка "Обычная-Город"
+        int commonOut;  // Доставка "Обычная-Область"
+        int urgently;   // Доставка "Срочная"
         Client client;  // Сущность клиента
         public List<Item_list> new_order_list = new List<Item_list>() { }; // Список товаров для БД
         public List<PrintList> list_for_print = new List<PrintList>() { };  // Список товаров для вывода
@@ -269,10 +264,9 @@ namespace WpfApp1
             {
                 devType_id = delivery_type.SelectedIndex + 1;   // Определяем его id
 
-                Random rnd = new Random();  // В зависимости от типа выбранной доставки генерируем её стоимость
-                if (devType_id == 1) devCost = rnd.Next(300, 1000);
-                if (devType_id == 2) devCost = rnd.Next(1000, 1500);
-                if (devType_id == 3) devCost = rnd.Next(1500, 5000);
+                if (devType_id == 1) devCost = commonIn;    // В зависимости от типа выбранной доставки устанавливаем её стоимость
+                if (devType_id == 2) devCost = commonOut;
+                if (devType_id == 3) devCost = urgently;
                 delivery_cost.Content = devCost + " руб.";  // И выводим
             }
         }
@@ -426,6 +420,14 @@ namespace WpfApp1
                     this.Close();
                 }
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random(); // Формируем стоимость различных доставок
+            commonIn = rnd.Next(300, 1000);
+            commonOut = rnd.Next(1000, 1500);
+            urgently = rnd.Next(1500, 5000);
         }
     }
 }
