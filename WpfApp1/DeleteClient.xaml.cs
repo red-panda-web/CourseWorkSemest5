@@ -100,6 +100,22 @@ namespace WpfApp1
                             }
                             else MessageBox.Show("Заказ с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
+                        else if(mode == "delivery") // Если форма удаления была вызвана из блока "Доставки"
+                        {
+                            var DeliveryExists = db.Deliveries.Any(d => d.id_Delivery == id);   // Проверяем существование доставки с  указанным id
+                            if (DeliveryExists) // Если такая существует
+                            {
+                                var Delivery = db.Deliveries.Where(d => d.id_Delivery == id).FirstOrDefault();  // выбираем её и заказ, которому она принадлежит
+                                var Order = db.Orders.Where(o => o.id_Delivery == id).FirstOrDefault();
+
+                                db.Deliveries.Remove(Delivery); // Удаляем доставку
+                                Order.id_Delivery = null;   // Убираем ее из заказа
+                                db.SaveChanges();   // Сохраняем изменения в БД
+                                MessageBox.Show("Доставки удалена!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                this.Close();
+                            }
+                            else MessageBox.Show("Доставки с таким id не существует!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
                 }
                 else MessageBox.Show("Некорректный id!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);

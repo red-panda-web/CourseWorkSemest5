@@ -151,7 +151,7 @@
                             </Grid.ColumnDefinitions>
                             <Button Content="Список доставок" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Height="47" Click="Button_Click_19"/>
                             <Button Content="Добавить к заказу" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Row="1" Click="Button_Click_20"/>
-                            <Button Content="Удалить" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Grid.Row="1"/>
+                            <Button Content="Удалить" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="130" Height="47" Grid.Column="1" Grid.Row="1" Click="Button_Click_21"/>
 
                         </Grid>
                     </GroupBox>

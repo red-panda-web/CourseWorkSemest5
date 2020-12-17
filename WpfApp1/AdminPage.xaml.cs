@@ -226,6 +226,12 @@ namespace WpfApp1
                     d.id_Delivery,
                     dt.Type_name,
                     d.Cost
+                }).Join(db.Orders, d => d.id_Delivery, o => o.id_Delivery, (d, o) => new
+                {
+                    d.id_Delivery,
+                    o.id_Order,
+                    d.Type_name,
+                    d.Cost
                 }).ToList();
             }
         }
@@ -234,6 +240,12 @@ namespace WpfApp1
         {
             AddDelivery ad = new AddDelivery();
             ad.Show();
+        }
+
+        private void Button_Click_21(object sender, RoutedEventArgs e)  // Кнопка "Удалить доставку"
+        {
+            DeleteClient dc = new DeleteClient("delivery");
+            dc.Show();
         }
     }
 }
