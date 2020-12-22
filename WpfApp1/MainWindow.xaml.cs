@@ -31,7 +31,6 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //LoadImg.Opacity = 100;
             string login = log.Text;
             string password = pass.Password;
             int userID = CheckUser(login, password);

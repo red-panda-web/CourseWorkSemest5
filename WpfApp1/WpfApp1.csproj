@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,16 +38,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -114,11 +133,43 @@
     </Compile>
     <Compile Include="Classess\Provider.cs" />
     <Compile Include="Classess\Role_list.cs" />
+    <Compile Include="getIdForOrderReports.xaml.cs">
+      <DependentUpon>getIdForOrderReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware_StoreDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hardware_StoreDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ItemCard.xaml.cs">
       <DependentUpon>ItemCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderList.xaml.cs">
       <DependentUpon>OrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportItemsComing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportItemsComing.Designer.cs">
+      <DependentUpon>ReportItemsComing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportItemsRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportItemsRelease.Designer.cs">
+      <DependentUpon>ReportItemsRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportRemains.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportRemains.Designer.cs">
+      <DependentUpon>ReportRemains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportTop10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportTop10.Designer.cs">
+      <DependentUpon>ReportTop10.cs</DependentUpon>
     </Compile>
     <Compile Include="SalesManagerPage.xaml.cs">
       <DependentUpon>SalesManagerPage.xaml</DependentUpon>
@@ -126,6 +177,7 @@
     <Compile Include="Classess\Supply.cs" />
     <Compile Include="Classess\Supply_list.cs" />
     <Compile Include="Classess\sysdiagram.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="WRHManagerPage.xaml.cs">
       <DependentUpon>WRHManagerPage.xaml</DependentUpon>
     </Compile>
@@ -189,6 +241,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="getIdForOrderReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ItemCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,6 +305,33 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportItemsComing.resx">
+      <DependentUpon>ReportItemsComing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportItemsComing_blank.rdlc" />
+    <EmbeddedResource Include="Reports\ReportItemsRelease.resx">
+      <DependentUpon>ReportItemsRelease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportItemsRelease_blank.rdlc" />
+    <EmbeddedResource Include="Reports\ReportRemains.resx">
+      <DependentUpon>ReportRemains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportRemains_blank.rdlc" />
+    <EmbeddedResource Include="Reports\ReportTop10.resx">
+      <DependentUpon>ReportTop10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportTop10_blank.rdlc" />
+    <None Include="Hardware_StoreDataSet.xsc">
+      <DependentUpon>Hardware_StoreDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hardware_StoreDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hardware_StoreDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hardware_StoreDataSet.xss">
+      <DependentUpon>Hardware_StoreDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,21 +342,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="loading_spinner.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Search_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="reload.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

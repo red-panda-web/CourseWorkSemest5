@@ -247,5 +247,35 @@ namespace WpfApp1
             DeleteClient dc = new DeleteClient("delivery");
             dc.Show();
         }
+
+        private void Button_Click_22(object sender, RoutedEventArgs e)  // Отчёт "ТОП-10 товаров"
+        {
+            Reports.ReportTop10 rt10 = new Reports.ReportTop10();
+            rt10.Show();
+        }
+
+        private void Button_Click_23(object sender, RoutedEventArgs e)  // Отчёт "Остатки товара"
+        {
+            Reports.ReportRemains rr = new Reports.ReportRemains();
+            rr.Show();
+        }
+
+        private void Button_Click_24(object sender, RoutedEventArgs e)  // Отчёт "Отпуск товара"
+        {
+            Reports.ReportItemsRelease rir = new Reports.ReportItemsRelease();
+            rir.Show();
+        }
+
+        private void Button_Click_25(object sender, RoutedEventArgs e)  // Отчёт "Приход товара"
+        {
+            Reports.ReportItemsComing ric = new Reports.ReportItemsComing();
+            ric.Show();
+        }
+
+        private void Button_Click_26(object sender, RoutedEventArgs e)  // Отчёт "Состав заказа"
+        {
+            getIdForOrderReports gid = new getIdForOrderReports();
+            gid.Show();
+        }
     }
 }

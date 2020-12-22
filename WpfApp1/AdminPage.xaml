@@ -158,7 +158,22 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Отчёты" Margin="68,-2,-70,0" HorizontalAlignment="Left" Width="59">
-                <Grid Background="#FFE5E5E5"></Grid>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Топ-10 товаров" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="147" Height="87" Click="Button_Click_22"/>
+                    <Button Content="Остатки товара" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="147" Height="87" Grid.Column="1" Click="Button_Click_23"/>
+                    <Button Content="Отпуск товара" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="147" Height="87" Grid.Column="2" Click="Button_Click_24"/>
+                    <Button Content="Приход товара" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="147" Height="87" Grid.Row="1" Click="Button_Click_25"/>
+                    <Button Content="Отчёт по заказу" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="147" Height="87" Grid.Column="1" Grid.Row="1" Click="Button_Click_26"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
