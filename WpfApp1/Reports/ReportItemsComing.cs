@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Windows.Forms;
 
 namespace WpfApp1.Reports
@@ -12,7 +13,9 @@ namespace WpfApp1.Reports
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.getSuppliesTableAdapter.Fill(this.hardware_StoreDataSet.getSupplies, dateTimePicker1.Value, dateTimePicker2.Value);
+            this.getSuppliesTableAdapter.Fill(this.hardware_StoreDataSet.getSupplies, dateFrom.Value, dateTo.Value);
+            reportViewer1.LocalReport.SetParameters(new ReportParameter("dateFrom", dateFrom.Value.ToShortDateString()));
+            reportViewer1.LocalReport.SetParameters(new ReportParameter("dateTo", dateTo.Value.ToShortDateString()));
             this.reportViewer1.RefreshReport();
         }
     }

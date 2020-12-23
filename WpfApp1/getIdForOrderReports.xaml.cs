@@ -16,6 +16,8 @@ namespace WpfApp1
 {
     public partial class getIdForOrderReports : Window
     {
+        public static int id_order;
+        public static int id_client;
         public getIdForOrderReports()
         {
             InitializeComponent();
@@ -25,22 +27,26 @@ namespace WpfApp1
         {
             try
             {
-                int id = Convert.ToInt32(orderId.Text);
-                if (id > 0)
+                id_order = Convert.ToInt32(orderId.Text);
+                if (id_order > 0)
                 {
                     using (ADOmodel db = new ADOmodel())
                     {
-                        var OrderExists = db.Orders.Any(i => i.id_Order == id); // Проверка существования заказа с указанным id
+                        var OrderExists = db.Orders.Any(i => i.id_Order == id_order); // Проверка существования заказа с указанным id
                         if (OrderExists)    // Если такой существует
                         {
-                            var Order = db.Orders.Where(i => i.id_Order == id).FirstOrDefault();    // Считываем данные заказа
-                            if(Order.id_Delivery != null)   // Проверяем наличие доставки у заказа
-                            {
+                            var Order = db.Orders.Where(i => i.id_Order == id_order).FirstOrDefault();    // Считываем данные заказа
+                            id_client = Order.id_Client;
 
+                            if(Order.id_Delivery != null)   // Проверяем наличие доставки у заказа и в зависимости от наличия вызываем нужный отчёт
+                            {
+                                Reports.ReportOrderWithDelivery rowd = new Reports.ReportOrderWithDelivery();
+                                rowd.Show();
                             }
                             else
                             {
-
+                                Reports.ReportOrderWithoutDelivery rowd = new Reports.ReportOrderWithoutDelivery();
+                                rowd.Show();
                             }
                         }    
                         else MessageBox.Show("Заказ с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);

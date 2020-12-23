@@ -147,6 +147,12 @@
     <Compile Include="OrderList.xaml.cs">
       <DependentUpon>OrderList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportOrderWithoutDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportOrderWithoutDelivery.Designer.cs">
+      <DependentUpon>ReportOrderWithoutDelivery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportItemsComing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     </Compile>
     <Compile Include="Reports\ReportItemsRelease.Designer.cs">
       <DependentUpon>ReportItemsRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportOrderWithDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportOrderWithDelivery.Designer.cs">
+      <DependentUpon>ReportOrderWithDelivery.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ReportRemains.cs">
       <SubType>Form</SubType>
@@ -313,6 +325,14 @@
       <DependentUpon>ReportItemsRelease.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportItemsRelease_blank.rdlc" />
+    <EmbeddedResource Include="Reports\ReportOrderWithDelivery.resx">
+      <DependentUpon>ReportOrderWithDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportOrderWithDelivery_blank.rdlc" />
+    <EmbeddedResource Include="Reports\ReportOrderWithoutDelivery.resx">
+      <DependentUpon>ReportOrderWithoutDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportOrderWithoutDelivery_blank.rdlc" />
     <EmbeddedResource Include="Reports\ReportRemains.resx">
       <DependentUpon>ReportRemains.cs</DependentUpon>
     </EmbeddedResource>

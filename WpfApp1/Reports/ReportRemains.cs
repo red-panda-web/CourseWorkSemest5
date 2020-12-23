@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Windows.Forms;
 
 namespace WpfApp1.Reports
@@ -20,6 +14,7 @@ namespace WpfApp1.Reports
         private void button1_Click(object sender, EventArgs e)
         {
             this.remainsTableAdapter.Fill(this.hardware_StoreDataSet.Remains, dateTimePicker1.Value);
+            reportViewer1.LocalReport.SetParameters(new ReportParameter("date", dateTimePicker1.Value.ToShortDateString()));
             this.reportViewer1.RefreshReport();
         }
     }
