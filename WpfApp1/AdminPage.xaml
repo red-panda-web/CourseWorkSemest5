@@ -13,7 +13,7 @@
                 <MenuItem Header="Выход из системы" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Выход" Click="MenuItem_Click_1"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Справка"></MenuItem>
+            <MenuItem Header="Справка" Click="MenuItem_Click_2"></MenuItem>
         </Menu>
         <TabControl Margin="0,30,0,0"  FontSize="14">
             <TabItem Header="Клиенты" Margin="5,-2,-39,0">

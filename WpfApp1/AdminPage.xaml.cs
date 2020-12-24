@@ -277,5 +277,11 @@ namespace WpfApp1
             getIdForOrderReports gid = new getIdForOrderReports();
             gid.Show();
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e) // Пункт меню "Справка"
+        {
+            Help h = new Help();
+            h.Show();
+        }
     }
 }

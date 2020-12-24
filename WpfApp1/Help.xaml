@@ -1,0 +1,13 @@
+﻿<Window x:Class="WpfApp1.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Справка" Height="433.138" Width="459.602" ResizeMode="NoResize" FontSize="14">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="375" Width="434" IsEnabled="False"><Run Text="Программа представляет собой средство для работы с базой данных строительного магазина &quot;Перуа Рульен&quot;"/><LineBreak/><Run Text="После авторизации пользователю становиться доступно меню с несколькими вкладками. Количество вкладок и доступных функций в них зависит от роли пользователя в системе."/><LineBreak/><Run Text="Вкладка &quot;Клиенты&quot; предоставляет функционал для работы с данными клиентов и их картами лояльности."/><LineBreak/><Run Text="Вкладка &quot;Пользователи&quot; (только у администратора) предоставляет функционал для работы с пользователями системы (сотрудниками)."/><LineBreak/><Run Text="Вкладка &quot;Товары&quot; взаимодействует с списко товара, а на вкладке &quot;Заказы&quot; можно работать непосредственно с заказами и доставками."/><LineBreak/><Run Text="Вкладка &quot;Отчёты&quot; позволяет сформировать и распечатать нужный отчет."/><LineBreak/><Run Text="Выход из программы осуществляется либо с помощью кнопки &quot;закрыть&quot; в виде крестика в правом верхнем ушлу окна, либо через пункт меню &quot;Программа&quot; -&gt; &quot;Выход&quot;."/><LineBreak/><Run Text="Если необходимо сменить пользователя, то выход производится через пункт меню &quot;Программа&quot; -&gt; &quot;Выйти из системы&quot;"/></TextBlock>
+
+    </Grid>
+</Window>
