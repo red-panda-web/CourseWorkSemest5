@@ -4,9 +4,11 @@ namespace WpfApp1
 {
     public partial class AddEmployee : Window
     {
-        public AddEmployee()
+        string conString;
+        public AddEmployee(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -21,7 +23,7 @@ namespace WpfApp1
 
             if(name != "" && surname != "" && log != "" && pas != "" && pos != -1 && role != -1)
             {
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     if (patronymic == "")
                     {

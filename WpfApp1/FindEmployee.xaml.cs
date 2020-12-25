@@ -5,9 +5,11 @@ namespace WpfApp1
 {
     public partial class FindEmployee : Window
     {
-        public FindEmployee()
+        string conString;
+        public FindEmployee(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -19,7 +21,7 @@ namespace WpfApp1
 
             if(name != "" && surname != "")
             {
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     bool EmployeeExists = false;
                     if (patronymic != "") EmployeeExists = db.Employees.Any(p => p.Surname.Contains(surname) && p.Name.Contains(name) && p.Patronymic.Contains(patronymic));

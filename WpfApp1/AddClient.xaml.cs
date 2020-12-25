@@ -7,9 +7,11 @@ namespace WpfApp1
 {
     public partial class AddClient : Window
     {
-        public AddClient()
+        string conString;
+        public AddClient(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -26,7 +28,7 @@ namespace WpfApp1
 
             if (name.Length != 0 && surname.Length != 0 && phone.Length == 11 && country.Length != 0 && city.Length != 0 &&street.Length != 0 && building.Length != 0)
             {
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     Client_address new_address = new Client_address() { Country = country, City = city, Street = street, Building = building, Flat = flat }; // Добавление адреса
                     db.Client_address.Add(new_address);
@@ -63,12 +65,12 @@ namespace WpfApp1
             else MessageBox.Show("Корректно заполните обязательные поля!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        private void Phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Phone_PreviewTextInput(object sender, TextCompositionEventArgs e)  // Ввод только цифр в поле номера телефона
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }
 
-        private void Flat_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Flat_PreviewTextInput(object sender, TextCompositionEventArgs e)   // И номера квартиры
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }

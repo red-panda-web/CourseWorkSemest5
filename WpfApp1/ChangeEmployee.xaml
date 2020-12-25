@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ChangeEmployee" Height="574.818" Width="474.817" ResizeMode="NoResize" FontSize="14">
+        Title="Изменить сотрудника" Height="574.818" Width="474.817" ResizeMode="NoResize" FontSize="14">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="151*"></RowDefinition>

@@ -7,9 +7,11 @@ namespace WpfApp1
     public partial class ChangeEmployee : Window
     {
         int id;
-        public ChangeEmployee()
+        string conString;
+        public ChangeEmployee(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -19,7 +21,7 @@ namespace WpfApp1
                 id = Convert.ToInt32(empl_id.Text);
                 if (id > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var EmployeeExists = db.Employees.Any(em => em.id_Employee == id);
                         if (EmployeeExists)
@@ -49,7 +51,7 @@ namespace WpfApp1
             string log = empl_Log.Text;
             string pas = empl_Password.Text;
 
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 var employee = db.Employees.Where(em => em.id_Employee == id).FirstOrDefault();
 

@@ -9,7 +9,12 @@ namespace WpfApp1
     {
         public ADOmodel()
             : base("name=dbContext")
+        {}
+
+        public ADOmodel(string conString)
+            : base("name=myContext")
         {
+            Database.Connection.ConnectionString += conString;
         }
 
         public virtual DbSet<Certificate> Certificates { get; set; }

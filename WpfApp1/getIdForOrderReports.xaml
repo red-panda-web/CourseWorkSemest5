@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="getIdForOrderReports" Height="154.38" Width="335.766" ResizeMode="NoResize" FontSize="14">
+        Title="ID заказа" Height="154.38" Width="335.766" ResizeMode="NoResize" FontSize="14">
     <Grid>
         <GroupBox Header="Введите id заказа:" HorizontalAlignment="Left" Height="100" Margin="10,9,0,0" VerticalAlignment="Top" Width="298">
             <Grid>

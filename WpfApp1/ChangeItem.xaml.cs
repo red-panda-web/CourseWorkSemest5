@@ -8,9 +8,11 @@ namespace WpfApp1
     public partial class ChangeItem : Window
     {
         int id;
-        public ChangeItem()
+        string conString;
+        public ChangeItem(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -21,7 +23,7 @@ namespace WpfApp1
 
                 if(id > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var ItemExists = db.Items.Any(i => i.id_Item == id);
 
@@ -64,7 +66,7 @@ namespace WpfApp1
                 int guarantee = Convert.ToInt32(item_guarantee.Text);
                 int price = Convert.ToInt32(item_price.Text);
 
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     var Item = db.Items.Where(i => i.id_Item == id).FirstOrDefault();
 

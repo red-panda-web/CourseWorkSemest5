@@ -6,11 +6,13 @@ namespace WpfApp1
 {
     public partial class DeleteClient : Window
     {
+        string conString;
         string mode;
-        public DeleteClient(string s)
+        public DeleteClient(string s, string str)
         {
             InitializeComponent();
             mode = s;
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -20,7 +22,7 @@ namespace WpfApp1
                 int id = Convert.ToInt32(id_delete.Text);
                 if (id > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         if (mode == "client")   // Если форма удаления была вызвана из вкладки "Клиент"
                         {
@@ -123,7 +125,7 @@ namespace WpfApp1
             catch (Exception)
             {
                 MessageBox.Show("Некорректный id!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }           
+            }        
         }
     }
 }

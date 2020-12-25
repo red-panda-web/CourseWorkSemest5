@@ -8,10 +8,11 @@ namespace WpfApp1
     public partial class ChangeClient : Window
     {
         int id;
-
-        public ChangeClient()
+        string conString;
+        public ChangeClient(string str)
         {
             InitializeComponent();
+            conString = str;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -22,7 +23,7 @@ namespace WpfApp1
 
                 if (id > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var ClientExists = db.Clients.Any(p => p.id_Client == id);
 
@@ -57,7 +58,7 @@ namespace WpfApp1
             string c_id = cl_cardID.Text;
             bool canChange = true;
 
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 var client = db.Clients.Where(p => p.id_Client == id).FirstOrDefault();
                 var client_address = db.Client_address.Where(p => p.id_Address == db.Clients.Where(c => c.id_Client == id).Select(c => c.id_Address).FirstOrDefault()).FirstOrDefault();

@@ -9,6 +9,7 @@ namespace WpfApp1
 {
     public partial class AddOrder : Window
     {
+        string conString;
         int cl_id;  // id клиента
         int em_id;  // id сотрудника
         int or_id;  // id заказа
@@ -24,10 +25,11 @@ namespace WpfApp1
         public double costWithDiscount = 0;    // Общая сумма заказа с скидкой по карте лояльности
         public int discount = 0;    // % скидки по карте лояльности
 
-        public AddOrder()
+        public AddOrder(string str)
         {
             InitializeComponent();
-            using (ADOmodel db = new ADOmodel())
+            conString = str;
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 or_id = db.Orders.Select(o => o.id_Order).Max() + 1;  // Создание id будущего заказа
             }
@@ -41,7 +43,7 @@ namespace WpfApp1
 
                 if (cl_id > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var ClientExists = db.Clients.Any(p => p.id_Client == cl_id);  // Поиск клиента с введенным id
 
@@ -83,7 +85,7 @@ namespace WpfApp1
 
         private void empl_position_SelectionChanged(object sender, SelectionChangedEventArgs e) // Событие изменения выбраной позиции в списке "Должность"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 if (empl_position.SelectedItem != null)   // Если в первом выпадающем списке выбрана должность
                 {
@@ -101,7 +103,7 @@ namespace WpfApp1
 
         private void empl_fullName_SelectionChanged(object sender, SelectionChangedEventArgs e) // Событие изменения выбранного ФИО в списке "ФИО сотрудника"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 if (empl_fullName.SelectedItem != null) // Если в втором выпадающем списке выбрано ФИО 
                 {
@@ -122,7 +124,7 @@ namespace WpfApp1
 
                 if (name != "")
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         bool ItemExists = db.Items.Any(i => i.Name.Contains(name)); // Проверка на существование товара
 
@@ -157,7 +159,7 @@ namespace WpfApp1
 
                 if (i_id > 0 && i_count > 0) // Если поля заполнены корректно
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         bool ItemExist = db.Items.Any(i => i.id_Item == i_id);  // Если товар существует
                         if (ItemExist)
@@ -239,7 +241,7 @@ namespace WpfApp1
             {
                 delivery_data.IsEnabled = true; // Активируем блок доставки
 
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     var client_adr = db.Client_address.Where(ca => ca.id_Address == client.id_Address).FirstOrDefault();    // Находим адрес клиента
 
@@ -315,7 +317,7 @@ namespace WpfApp1
             } 
 
             if(canSend){    // Если все заполнено корректно, то начинаем отправлять данные в БД
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     int id_cert = 0;    // Идентификатор нового сертификата
                     int id_deliv = 0;   // Идентификатор новой доставки

@@ -116,9 +116,6 @@
     <Compile Include="ChangeItem.xaml.cs">
       <DependentUpon>ChangeItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantPage.xaml.cs">
-      <DependentUpon>ConsultantPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeleteClient.xaml.cs">
       <DependentUpon>DeleteClient.xaml</DependentUpon>
     </Compile>
@@ -186,16 +183,10 @@
     <Compile Include="Reports\ReportTop10.Designer.cs">
       <DependentUpon>ReportTop10.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesManagerPage.xaml.cs">
-      <DependentUpon>SalesManagerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classess\Supply.cs" />
     <Compile Include="Classess\Supply_list.cs" />
     <Compile Include="Classess\sysdiagram.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="WRHManagerPage.xaml.cs">
-      <DependentUpon>WRHManagerPage.xaml</DependentUpon>
-    </Compile>
     <Page Include="AddClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,10 +224,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangeItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConsultantPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,14 +279,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OrderList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SalesManagerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WRHManagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

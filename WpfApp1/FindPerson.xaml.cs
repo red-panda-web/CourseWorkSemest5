@@ -5,9 +5,11 @@ namespace WpfApp1
 {
     public partial class FindPerson : Window
     {
-        public FindPerson()
+        string conString;
+        public FindPerson(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -18,7 +20,7 @@ namespace WpfApp1
             string surname = Person_surname.Text;
             string patronymic = Person_partonymic.Text;
             
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 if (name != "" && surname != "" && patronymic != "")
                 {

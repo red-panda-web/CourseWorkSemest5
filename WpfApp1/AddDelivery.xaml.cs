@@ -1,30 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
     public partial class AddDelivery : Window
     {
+        string conString;   // Строка соединения
         int o_id;   // id заказа
         int devType_id; // id типа доставки
         decimal devCost;    // Стоимость доставки
         decimal commonIn;   // Доставка "Обычная-Город"
         decimal commonOut;  // Доставка "Обычная-Область"
         decimal urgently;   // Доставка "Срочная"
-        public AddDelivery()
+        public AddDelivery(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +27,7 @@ namespace WpfApp1
                 o_id = Convert.ToInt32(order_id.Text);  // Считываем id товара
                 if (o_id > 0)   // Проверяем его корректность
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var OrderExists = db.Orders.Any(i => i.id_Order == o_id);   // Проверяем существование заказа с таким id
                         if (OrderExists)    // Если такой заказ существует
@@ -79,7 +72,7 @@ namespace WpfApp1
         {
             if (delivery_type.SelectedItem != null) // Если выбран тип доставки
             {
-                using (ADOmodel db = new ADOmodel())
+                using (ADOmodel db = new ADOmodel(conString))
                 {
                     int id_deliv = db.Deliveries.Select(d => d.id_Delivery).Max() + 1;  // Создаем id будущей доставки
 

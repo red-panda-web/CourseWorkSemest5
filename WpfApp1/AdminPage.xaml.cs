@@ -5,14 +5,57 @@ namespace WpfApp1
 {
     public partial class AdminPage : Window
     {
-        public AdminPage()
+        string conString;
+        int id_role;
+
+        public AdminPage(string str, int id)
         {
             InitializeComponent();
-            using (ADOmodel db = new ADOmodel())
+
+            conString = str;    // Получаем строку подключения и id роли пользователя
+            id_role = id;
+
+            using (ADOmodel db = new ADOmodel(conString))   // Заполняем счетчики на вкладках
             {
                 all_clients.Content = db.Clients.Count().ToString();
                 allEmpl.Content = db.Employees.Count().ToString();
                 all_Items.Content = db.Items.Count().ToString();
+            }
+
+            if (id_role == 2)
+            {
+                addClient_btn.IsEnabled = false;
+                changeClient_btn.IsEnabled = false;
+                deleteClient_btn.IsEnabled = false;
+                addLoyalCard_btn.IsEnabled = false;
+
+                addEmpl_btn.IsEnabled = false;
+                changeEmpl_btn.IsEnabled = false;
+                deleteEmpl_btn.IsEnabled = false;
+
+                addOrder_btn.IsEnabled = false;
+                deleteOrder_btn.IsEnabled = false;
+                addDelivery_btn.IsEnabled = false;
+                deleteDelivery_btn.IsEnabled = false;
+
+                reportTop10_btn.IsEnabled = false;
+            }
+            if (id_role == 3 || id_role == 4)
+            {
+                if (id_role == 3) changeClient_btn.IsEnabled = false;
+
+                addEmpl_btn.IsEnabled = false;
+                changeEmpl_btn.IsEnabled = false;
+                deleteEmpl_btn.IsEnabled = false;
+
+                addItem_btn.IsEnabled = false;
+                changeItem_btn.IsEnabled = false;
+                deleteItem_btn.IsEnabled = false;
+
+                if (id_role == 3) reportTop10_btn.IsEnabled = false;
+                reportRemains_btn.IsEnabled = false;
+                reportItemsSell_btn.IsEnabled = false;
+                reportItemsCom_btn.IsEnabled = false;
             }
         }
 
@@ -30,7 +73,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e) // Кнопка "Все клиенты"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 all_clients.Content = db.Clients.ToList().Count().ToString();
                 ClientsTable.ItemsSource = (from c in db.Clients
@@ -57,38 +100,38 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)   // Кнопка "Найти клиента"
         {
-            FindPerson fp = new FindPerson();
+            FindPerson fp = new FindPerson(conString);
             fp.Owner = this;
             fp.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e) // Кнопка "Добавить клиента"
         {
-            AddClient ac = new AddClient();
+            AddClient ac = new AddClient(conString);
             ac.Show();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)   // Кнопка "Удалить клиента"
         {
-            DeleteClient dc = new DeleteClient("client");
+            DeleteClient dc = new DeleteClient("client", conString);
             dc.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)   // Кнопка "Изменить клиента"
         {
-            ChangeClient cc = new ChangeClient();
+            ChangeClient cc = new ChangeClient(conString);
             cc.Show();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)   //Кнопка "Добавить новую карту лояльности"
         {
-            AddNewCart anc = new AddNewCart();
+            AddNewCart anc = new AddNewCart(conString);
             anc.Show();
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)   // Кнопка "Все сотрудники"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 allEmpl.Content = db.Employees.Count().ToString();
                 EmployeeTable.ItemsSource = (from em in db.Employees
@@ -110,32 +153,32 @@ namespace WpfApp1
 
         private void Button_Click_7(object sender, RoutedEventArgs e)   // Кнопка "Добавить сотрудника"
         {
-            AddEmployee ae = new AddEmployee();
+            AddEmployee ae = new AddEmployee(conString);
             ae.Show();
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)   // Кнопка "Изменить сотрудника"
         {
-            ChangeEmployee ce = new ChangeEmployee();
+            ChangeEmployee ce = new ChangeEmployee(conString);
             ce.Show();
         }
 
         private void Button_Click_9(object sender, RoutedEventArgs e)   // Кнопка "Удалить сотрудника"
         {
-            DeleteClient dc = new DeleteClient("employee");
+            DeleteClient dc = new DeleteClient("employee", conString);
             dc.Show();
         }
 
         private void Button_Click_10(object sender, RoutedEventArgs e)  // Кнопка "Найти сотрудника"
         {
-            FindEmployee fe = new FindEmployee();
+            FindEmployee fe = new FindEmployee(conString);
             fe.Owner = this;
             fe.Show();
         }
 
         private void Button_Click_11(object sender, RoutedEventArgs e)  // Кнопка "Список товаров"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 all_Items.Content = db.Items.Count().ToString();
                 ItemsTable.ItemsSource = db.Items.Join(db.Item_type, i => i.id_Type, it => it.id_Type, (i, it) => new
@@ -153,32 +196,32 @@ namespace WpfApp1
 
         private void Button_Click_12(object sender, RoutedEventArgs e)  // Кнопка "Найти товар"
         {
-            FindItem fi = new FindItem();
+            FindItem fi = new FindItem(conString);
             fi.Owner = this;
             fi.Show();
         }
 
         private void Button_Click_13(object sender, RoutedEventArgs e)  // Кнопка "Добавить товар"
         {
-            AddItem ai = new AddItem();
+            AddItem ai = new AddItem(conString);
             ai.Show();
         }
 
         private void Button_Click_14(object sender, RoutedEventArgs e)  // Кнопка "Изменить товар"
         {
-            ChangeItem ci = new ChangeItem();
+            ChangeItem ci = new ChangeItem(conString);
             ci.Show();
         }
 
         private void Button_Click_15(object sender, RoutedEventArgs e)  // Кнопка "Удалить товар"
         {
-            DeleteClient di = new DeleteClient("item");
+            DeleteClient di = new DeleteClient("item", conString);
             di.Show();
         }
 
         private void Button_Click_16(object sender, RoutedEventArgs e)  // Кнопка "Список заказов"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 OrdersTable.ItemsSource = (from o in db.Orders 
                                            join em in db.Employees on o.id_Employee equals em.id_Employee
@@ -207,19 +250,19 @@ namespace WpfApp1
 
         private void Button_Click_17(object sender, RoutedEventArgs e)  // Кнопка "Добавить заказ"
         {
-            AddOrder ao = new AddOrder();
+            AddOrder ao = new AddOrder(conString);
             ao.Show();
         }
 
         private void Button_Click_18(object sender, RoutedEventArgs e)  // Кнопка "Удалить заказ"
         {
-            DeleteClient dc = new DeleteClient("order");
+            DeleteClient dc = new DeleteClient("order", conString);
             dc.Show();
         }
 
         private void Button_Click_19(object sender, RoutedEventArgs e)  // Кнопка "Список доставок"
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 OrdersTable.ItemsSource = db.Deliveries.Join(db.Delivery_type, d => d.id_Type, dt => dt.id_Type, (d, dt) => new
                 {
@@ -238,13 +281,13 @@ namespace WpfApp1
 
         private void Button_Click_20(object sender, RoutedEventArgs e)  // Кнопка "Добавить доставку"
         {
-            AddDelivery ad = new AddDelivery();
+            AddDelivery ad = new AddDelivery(conString);
             ad.Show();
         }
 
         private void Button_Click_21(object sender, RoutedEventArgs e)  // Кнопка "Удалить доставку"
         {
-            DeleteClient dc = new DeleteClient("delivery");
+            DeleteClient dc = new DeleteClient("delivery", conString);
             dc.Show();
         }
 

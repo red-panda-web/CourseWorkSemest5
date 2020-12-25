@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
     public partial class AddItem : Window
     {
-        public AddItem()
+        string conString;
+        public AddItem(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +27,7 @@ namespace WpfApp1
 
                 if (name != "" && units != "" && url != "" && price > 0 && type != null)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         int typeId = db.Item_type.Where(it => it.Type_name.Equals(type)).Select(it => it.id_Type).FirstOrDefault();
 
