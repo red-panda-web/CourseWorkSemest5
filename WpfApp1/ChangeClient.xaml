@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Изменить клиента" Height="520.073" Width="558.03" ResizeMode="NoResize" FontSize="14">
+        Title="Изменить клиента" Height="520.073" Width="558.03" ResizeMode="NoResize" FontSize="14" Icon="programIcon.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

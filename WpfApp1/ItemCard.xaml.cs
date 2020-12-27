@@ -17,15 +17,17 @@ namespace WpfApp1
     public partial class ItemCard : Window
     {
         int id_item;
-        public ItemCard(int i)
+        string conString;
+        public ItemCard(int i, string str)
         {
             InitializeComponent();
             id_item = i;
+            conString = str;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (ADOmodel db = new ADOmodel())
+            using (ADOmodel db = new ADOmodel(conString))
             {
                 var item = db.Items.Where(i => i.id_Item == id_item).FirstOrDefault();
                 var category = db.Item_type.Where(it => it.id_Type == item.id_Type).FirstOrDefault();

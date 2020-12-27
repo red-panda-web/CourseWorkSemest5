@@ -8,10 +8,12 @@ namespace WpfApp1
     {
         int id;
         string conString;
-        public ChangeEmployee(string str)
+        int idCurrentEmpl;
+        public ChangeEmployee(string str, int empl_id)
         {
             InitializeComponent();
             conString = str;
+            idCurrentEmpl = empl_id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,6 +45,7 @@ namespace WpfApp1
 
         private void change_btn_Click(object sender, RoutedEventArgs e)
         {
+            AdminPage main = this.Owner as AdminPage;
             string name = empl_Name.Text;
             string surname = empl_Surname.Text;
             string patronymic = empl_Patronymic.Text;
@@ -53,19 +56,35 @@ namespace WpfApp1
 
             using (ADOmodel db = new ADOmodel(conString))
             {
-                var employee = db.Employees.Where(em => em.id_Employee == id).FirstOrDefault();
+                try
+                {
+                    var employee = db.Employees.Where(em => em.id_Employee == id).FirstOrDefault();
 
-                if (name != "") employee.Name = name;
-                if (surname != "") employee.Surname = surname;
-                if (patronymic != "") employee.Patronymic = patronymic;
-                if (pos != -1) employee.id_Position = pos + 1;
-                if (role != -1) employee.id_Role = role + 1;
-                if (log != "") employee.Login = log;
-                if (pas != "") employee.Password = pas;
-
-                db.SaveChanges();
-                MessageBox.Show("Данные успешно изменены!", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                    if (name != "") employee.Name = name;
+                    if (surname != "") employee.Surname = surname;
+                    if (patronymic != "") employee.Patronymic = patronymic;
+                    if (pos != -1) employee.id_Position = pos + 1;
+                    if (role != -1) employee.id_Role = role + 1;
+                    if (log != "") employee.Login = log;
+                    if (pas != "") employee.Password = pas;          
+                    
+                    db.SaveChanges();
+                    MessageBox.Show("Данные успешно изменены!", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (idCurrentEmpl == id && log != "" || idCurrentEmpl == id && pas != "")
+                    {
+                        MessageBox.Show("Необходимо произвести вход с помощью новых данных.", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                        MainWindow mw = new MainWindow();
+                        mw.Show();
+                        main.Close();
+                    }
+                    else this.Close();
+                }
+                catch(System.Data.Entity.Infrastructure.DbUpdateException)
+                {
+                    MessageBox.Show("Ошибка. Попробуйте менять логин и пароль по очереди, а не одновременно.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
             }
         }
     }

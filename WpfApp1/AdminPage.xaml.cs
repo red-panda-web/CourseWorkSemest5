@@ -7,13 +7,15 @@ namespace WpfApp1
     {
         string conString;
         int id_role;
+        int id_empl;
 
-        public AdminPage(string str, int id)
+        public AdminPage(string str, int EmplId, int RoleId)
         {
             InitializeComponent();
 
-            conString = str;    // Получаем строку подключения и id роли пользователя
-            id_role = id;
+            conString = str;    // Получаем строку подключения и id пользователя и id его роли
+            id_role = RoleId;
+            id_empl = EmplId;
 
             using (ADOmodel db = new ADOmodel(conString))   // Заполняем счетчики на вкладках
             {
@@ -29,9 +31,7 @@ namespace WpfApp1
                 deleteClient_btn.IsEnabled = false;
                 addLoyalCard_btn.IsEnabled = false;
 
-                addEmpl_btn.IsEnabled = false;
-                changeEmpl_btn.IsEnabled = false;
-                deleteEmpl_btn.IsEnabled = false;
+                UsersTab.IsEnabled = false;
 
                 addOrder_btn.IsEnabled = false;
                 deleteOrder_btn.IsEnabled = false;
@@ -44,9 +44,7 @@ namespace WpfApp1
             {
                 if (id_role == 3) changeClient_btn.IsEnabled = false;
 
-                addEmpl_btn.IsEnabled = false;
-                changeEmpl_btn.IsEnabled = false;
-                deleteEmpl_btn.IsEnabled = false;
+                UsersTab.IsEnabled = false;
 
                 addItem_btn.IsEnabled = false;
                 changeItem_btn.IsEnabled = false;
@@ -159,7 +157,8 @@ namespace WpfApp1
 
         private void Button_Click_8(object sender, RoutedEventArgs e)   // Кнопка "Изменить сотрудника"
         {
-            ChangeEmployee ce = new ChangeEmployee(conString);
+            ChangeEmployee ce = new ChangeEmployee(conString, id_empl);
+            ce.Owner = this;
             ce.Show();
         }
 
@@ -317,7 +316,7 @@ namespace WpfApp1
 
         private void Button_Click_26(object sender, RoutedEventArgs e)  // Отчёт "Состав заказа"
         {
-            getIdForOrderReports gid = new getIdForOrderReports();
+            getIdForOrderReports gid = new getIdForOrderReports(conString);
             gid.Show();
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Главная" Height="450" Width="900" MinWidth="900" MinHeight="450">
+        Title="Главная" Height="450" Width="900" MinWidth="900" MinHeight="450" Icon="programIcon.jpg">
 
     <Grid>
         <Menu Height="28" Margin="0" VerticalAlignment="Top" FontSize="14">
@@ -50,7 +50,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Пользователи" Margin="0,-2,-46,0" HorizontalAlignment="Right" Width="102">
+            <TabItem x:Name="UsersTab" Header="Пользователи" Margin="0,-2,-46,0" HorizontalAlignment="Right" Width="102">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>

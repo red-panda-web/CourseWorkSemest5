@@ -125,7 +125,7 @@ namespace WpfApp1
             catch (Exception)
             {
                 MessageBox.Show("Некорректный id!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }        
+            }     
         }
     }
 }

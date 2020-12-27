@@ -47,7 +47,7 @@ namespace WpfApp1
                 int userID = CheckUser(login, password);    // Проверка на существование пользователя с таким логином и паролем и возврат его id
                 if (userID > 0) // Если существует
                 {
-                    AdminPage adm = new AdminPage(conString, returnRole(userID));
+                    AdminPage adm = new AdminPage(conString, userID, returnRole(userID));
                     adm.Show();
                     this.Close();
                 }

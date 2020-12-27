@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Добавить клиента" Height="453.571" Width="606.464" FontSize="14" ResizeMode="NoResize">
+        Title="Добавить клиента" Height="453.571" Width="606.464" FontSize="14" ResizeMode="NoResize" Icon="programIcon.jpg">
     <Grid>
         <GroupBox Header="Персональные данные:" Height="109" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="569">
             <Grid>

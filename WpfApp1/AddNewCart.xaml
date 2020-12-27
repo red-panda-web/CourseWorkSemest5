@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Добавить карту" Height="305.474" Width="344.526" ResizeMode="NoResize" FontSize="14">
+        Title="Добавить карту" Height="305.474" Width="344.526" ResizeMode="NoResize" FontSize="14" Icon="programIcon.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

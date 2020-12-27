@@ -31,6 +31,7 @@ namespace WpfApp1.Reports
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportTop10));
             this.top10BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hardware_StoreDataSet = new WpfApp1.Hardware_StoreDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -138,6 +139,7 @@ namespace WpfApp1.Reports
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportTop10";
             this.Text = "Отчёт \"ТОП-10 товаров\"";
             ((System.ComponentModel.ISupportInitialize)(this.top10BindingSource)).EndInit();

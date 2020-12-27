@@ -18,9 +18,11 @@ namespace WpfApp1
     {
         public static int id_order;
         public static int id_client;
-        public getIdForOrderReports()
+        string conString;
+        public getIdForOrderReports(string str)
         {
             InitializeComponent();
+            conString = str;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -30,7 +32,7 @@ namespace WpfApp1
                 id_order = Convert.ToInt32(orderId.Text);
                 if (id_order > 0)
                 {
-                    using (ADOmodel db = new ADOmodel())
+                    using (ADOmodel db = new ADOmodel(conString))
                     {
                         var OrderExists = db.Orders.Any(i => i.id_Order == id_order); // Проверка существования заказа с указанным id
                         if (OrderExists)    // Если такой существует
@@ -48,6 +50,7 @@ namespace WpfApp1
                                 Reports.ReportOrderWithoutDelivery rowd = new Reports.ReportOrderWithoutDelivery();
                                 rowd.Show();
                             }
+                            this.Close();
                         }    
                         else MessageBox.Show("Заказ с таким id не найден!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                     }

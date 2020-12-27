@@ -45,7 +45,7 @@ namespace WpfApp1
                             else
                             {
                                 int itemId = db.Items.Where(i => i.Name.Contains(name)).Select(i => i.id_Item).FirstOrDefault();    // Если товар 1, то берем его id и открываем описание в отдельном окне
-                                ItemCard ic = new ItemCard(itemId);
+                                ItemCard ic = new ItemCard(itemId, conString);
                                 ic.Show();
                             }
 

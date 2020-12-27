@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Найти товар" Height="202.176" Width="612.774" ResizeMode="NoResize" FontSize="14">
+        Title="Найти товар" Height="202.176" Width="612.774" ResizeMode="NoResize" FontSize="14" Icon="programIcon.jpg">
     <Grid>
         <GroupBox Header="Введите данные о товаре:" HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="576">
             <Grid>

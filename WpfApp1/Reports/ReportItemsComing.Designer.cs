@@ -31,6 +31,7 @@ namespace WpfApp1.Reports
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportItemsComing));
             this.getSuppliesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hardware_StoreDataSet = new WpfApp1.Hardware_StoreDataSet();
             this.dateFrom = new System.Windows.Forms.DateTimePicker();
@@ -39,8 +40,8 @@ namespace WpfApp1.Reports
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.getSuppliesTableAdapter = new WpfApp1.Hardware_StoreDataSetTableAdapters.getSuppliesTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.getSuppliesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hardware_StoreDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -113,15 +114,6 @@ namespace WpfApp1.Reports
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выберите период:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "С";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -131,6 +123,15 @@ namespace WpfApp1.Reports
             this.label2.TabIndex = 4;
             this.label2.Text = "по";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "С";
+            // 
             // ReportItemsComing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +139,7 @@ namespace WpfApp1.Reports
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportItemsComing";
             this.Text = "Отчёт \"Приход товара\"";
             ((System.ComponentModel.ISupportInitialize)(this.getSuppliesBindingSource)).EndInit();

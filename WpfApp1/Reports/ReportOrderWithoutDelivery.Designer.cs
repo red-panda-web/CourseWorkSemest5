@@ -32,6 +32,7 @@ namespace WpfApp1.Reports
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportOrderWithoutDelivery));
             this.getOrderInfoWithoutDeliveryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hardware_StoreDataSet = new WpfApp1.Hardware_StoreDataSet();
             this.getOrdersItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -90,6 +91,7 @@ namespace WpfApp1.Reports
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportOrderWithoutDelivery";
             this.Text = "Отчёт по заказу";
             this.Load += new System.EventHandler(this.ReportOrderWithoutDelivery_Load);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Изменить товар" Height="525.547" Width="482.482" ResizeMode="NoResize" FontSize="14">
+        Title="Изменить товар" Height="525.547" Width="482.482" ResizeMode="NoResize" FontSize="14" Icon="programIcon.jpg">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="112*"/>
