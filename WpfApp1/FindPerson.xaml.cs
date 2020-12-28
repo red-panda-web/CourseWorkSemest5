@@ -22,9 +22,10 @@ namespace WpfApp1
             
             using (ADOmodel db = new ADOmodel(conString))
             {
-                if (name != "" && surname != "" && patronymic != "")
+                if (name == "" && surname == "" && patronymic == "" && phone == "") MessageBox.Show("Введите либо данные ФИО либо номер телефона!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                else if (name != "" || surname != "" || patronymic != "")
                 {
-                    var ClientExists = db.Clients.Any(p => p.Surname == surname && p.Name == name && p.Patronymic == patronymic);
+                    var ClientExists = db.Clients.Any(p => p.Surname.Contains(surname) && p.Name.Contains(name) && p.Patronymic.Contains(patronymic));
 
                     if (ClientExists)
                     {
@@ -32,7 +33,7 @@ namespace WpfApp1
                                                          join ca in db.Client_address on c.id_Address equals ca.id_Address
                                                          join lc in db.Loyality_card on c.id_Loyality_card equals lc.id_Loyality_card into grouping
                                                          from gr in grouping.DefaultIfEmpty()
-                                                         where (c.Name == name) && (c.Surname == surname) && (c.Patronymic == patronymic)
+                                                         where (c.Name.Contains(name)) && (c.Surname.Contains(surname)) && (c.Patronymic.Contains(patronymic))
                                                          select new
                                                          {
                                                              id = c.id_Client,
@@ -81,7 +82,6 @@ namespace WpfApp1
                     }
                     else MessageBox.Show("Клиент не найден!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                else MessageBox.Show("Заполните поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

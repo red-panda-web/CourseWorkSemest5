@@ -23,15 +23,15 @@
         <GroupBox x:Name="empl_data" Header="Измените данные:" HorizontalAlignment="Left" Height="319" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="440" IsEnabled="False">
             <Grid>
                 <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="empl_Surname" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                <TextBox x:Name="empl_Surname" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="30"/>
                 <Label Content="Имя:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="empl_Name" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                <TextBox x:Name="empl_Name" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="30"/>
                 <Label Content="Отчество:" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="empl_Patronymic" HorizontalAlignment="Left" Height="23" Margin="10,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                <TextBox x:Name="empl_Patronymic" HorizontalAlignment="Left" Height="23" Margin="10,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="30"/>
                 <Label Content="Логин:" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="empl_Log" HorizontalAlignment="Left" Height="23" Margin="10,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                <TextBox x:Name="empl_Log" HorizontalAlignment="Left" Height="23" Margin="10,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="255"/>
                 <Label Content="Пароль:" HorizontalAlignment="Left" Margin="238,223,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="empl_Password" HorizontalAlignment="Left" Height="23" Margin="237,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+                <TextBox x:Name="empl_Password" HorizontalAlignment="Left" Height="23" Margin="237,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="255"/>
                 <Label Content="Должность" HorizontalAlignment="Left" Margin="237,10,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="empl_Position" HorizontalAlignment="Left" Margin="237,39,0,0" VerticalAlignment="Top" Width="181" Height="23">
                     <ListBoxItem Content="Директор"/>

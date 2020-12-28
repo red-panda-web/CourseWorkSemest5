@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ItemCard" Height="480.657" Width="572.263" ResizeMode="NoResize" FontSize="14" Loaded="Window_Loaded" Icon="programIcon.jpg">
+        Title="Карточка товара" Height="480.657" Width="572.263" ResizeMode="NoResize" FontSize="14" Loaded="Window_Loaded" Icon="programIcon.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

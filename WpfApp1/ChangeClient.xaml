@@ -48,17 +48,17 @@
                 <Label Content="Город:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
                 <Label Content="Улица:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
                 <Label Content="Дом:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3"/>
-                <TextBox x:Name="cl_surname" HorizontalAlignment="Left" Height="23" Margin="86,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
-                <TextBox x:Name="cl_name" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="1"/>
-                <TextBox x:Name="cl_patronymic" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="2"/>
+                <TextBox x:Name="cl_surname" HorizontalAlignment="Left" Height="23" Margin="86,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" MaxLength="30"/>
+                <TextBox x:Name="cl_name" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="1" MaxLength="30"/>
+                <TextBox x:Name="cl_patronymic" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="2" MaxLength="30"/>
                 <TextBox x:Name="cl_phone" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="3" PreviewTextInput="cl_phone_PreviewTextInput" MaxLength="11"/>
                 <TextBox x:Name="cl_cardID" HorizontalAlignment="Left" Height="23" Margin="86,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Row="4"/>
-                <TextBox x:Name="cl_country" HorizontalAlignment="Left" Height="23" Margin="76,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1"/>
-                <TextBox x:Name="cl_city" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="1"/>
-                <TextBox x:Name="cl_street" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="2"/>
-                <TextBox x:Name="cl_building" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="3"/>
+                <TextBox x:Name="cl_country" HorizontalAlignment="Left" Height="23" Margin="76,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" MaxLength="30"/>
+                <TextBox x:Name="cl_city" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="1" MaxLength="20"/>
+                <TextBox x:Name="cl_street" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="2" MaxLength="20"/>
+                <TextBox x:Name="cl_building" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="3" MaxLength="5"/>
                 <Label Content="Квартира:" Grid.Column="1" HorizontalAlignment="Left" Margin="3,10,0,0" Grid.Row="4" VerticalAlignment="Top"/>
-                <TextBox x:Name="cl_flat" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="4" PreviewTextInput="cl_flat_PreviewTextInput"/>
+                <TextBox x:Name="cl_flat" HorizontalAlignment="Left" Height="23" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Grid.Column="1" Grid.Row="4" PreviewTextInput="cl_flat_PreviewTextInput" MaxLength="5"/>
             </Grid>
         </GroupBox>
         <Button x:Name="change_btn" Content="Изменить" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Width="154" Height="36" Grid.Row="2" IsEnabled="False" Click="change_btn_Click"/>
